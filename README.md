@@ -3,13 +3,14 @@
 > A curated, time-bounded reading list on multimodal agents that **reason with actions**, **use or create visual thoughts**, and **plan–generate–evaluate–refine visual content**.
 
 **Coverage window:** 2025-07-14 to 2026-07-14 (inclusive, based on the first public arXiv version unless noted)  
-**Last updated:** 2026-07-14 · **110 papers**
+**Last updated:** 2026-07-14 · **112 papers**
 
 ## Contents
 
 - [Scope](#scope)
 - [How the areas relate](#how-the-areas-relate)
 - [Research threads at a glance](#research-threads-at-a-glance)
+- [Reliable reasoning](#reliable-reasoning)
 - [Tag legend](#tag-legend)
 - [Paper timeline](#paper-timeline)
 - [Selection notes](#selection-notes)
@@ -55,6 +56,20 @@ These are representative paths through the timeline, not separate rankings:
 - **Agentic image generation:** Talk2Image / Maestro → ImAgent / MIRA → GenAgent → GEMS / Gen-Searcher → SCOPE / Generation Navigator / InterleaveThinker → Qwen-Image-Agent / CanvasAgent.
 - **Agentic video and world models:** MAViS → VISTA → Hollywood Town / CoAgent → SPIRAL → Agentic Video Generation → ViMax / VideoAgent.
 
+## Reliable reasoning
+
+The `REL` tag marks methods and evaluations that explicitly target the reliability, faithfulness, or generalization of image-mediated reasoning. This is a cross-cutting index; every paper below appears once in the main timeline.
+
+| Reliability focus | Papers | What is made reliable |
+|---|---|---|
+| Noisy-trace selection | [Reliable Thinking with Images](https://arxiv.org/abs/2602.12916) | Estimates the reliability of visual cues and textual reasoning, then filters and votes over candidate traces. |
+| Multi-turn self-correction | [Deep But Reliable](https://arxiv.org/abs/2512.17306) | Trains reflective visual-tool trajectories while penalizing unsupported or redundant exploration. |
+| Test-time perception scaling | [Test-time Scaling over Perception](https://arxiv.org/abs/2604.11025) | Explores multiple perception traces, confidence-filters them, and refines unresolved uncertainty. |
+| Evidence grounding and faithfulness | [DeFacto](https://arxiv.org/abs/2509.20912) · [Beyond Accuracy](https://arxiv.org/abs/2601.11633) | Enforces causal evidence–answer consistency and diagnoses correct answers grounded in the wrong regions. |
+| Reasoning–action alignment | [Walk the Talk](https://arxiv.org/abs/2604.06777) | Aligns textual reasoning with the visual actions and observations actually used. |
+| Process verification | [What, Whether and How?](https://arxiv.org/abs/2602.08346) | Studies process reward models and fine-grained error detection over Thinking-with-Images trajectories. |
+| Trace efficiency and generalization | [Revisiting the Necessity of Lengthy Chain-of-Thought](https://arxiv.org/abs/2511.22586) | Tests whether shorter, essential grounding traces generalize better than lengthy visual chains of thought. |
+
 ## Tag legend
 
 | Tag | Meaning |
@@ -70,6 +85,7 @@ These are representative paths through the timeline, not separate rankings:
 | `AG-I` | Agentic image generation or editing |
 | `AG-V` | Agentic video generation or production |
 | `WM` | Video/world model used for prediction or planning |
+| `REL` | Reliability, faithfulness, verification, or generalization of multimodal reasoning |
 | `TRAIN` | Training, reinforcement learning, or process supervision |
 | `BENCH` | Benchmark, evaluation, survey, or diagnostic study |
 
@@ -132,8 +148,9 @@ Papers are ordered by **first public release date (newest first)**. Cross-tags e
 | 2026-04-26 | [CineAGI: Character-Consistent Movie Creation through LLM-Orchestrated Multi-Modal Generation and Cross-Scene Integration](https://arxiv.org/abs/2604.23579) | **AG-V · AR** | Orchestrates narrative blueprints, character consistency, cross-scene integration, and audiovisual synchronization. |
 | 2026-04-23 | [S1-VL: Scientific Multimodal Reasoning Model with Thinking-with-Images](https://arxiv.org/abs/2604.21409) | **AR · TWI-P · TOOL** | Writes and executes image-processing code in a sandbox to obtain scientific visual evidence. |
 | 2026-04-14 | [Towards Long-horizon Agentic Multimodal Search](https://arxiv.org/abs/2604.12890) · [Code](https://github.com/RUCAIBox/LMM-Searcher) | **AR · SEARCH · TOOL · TWI-E** | Stores visual assets by identifier and fetches them on demand across search traces up to one hundred turns. |
+| 2026-04-13 | [Test-time Scaling over Perception: Resolving the Grounding Paradox in Thinking with Images](https://arxiv.org/abs/2604.11025) · [Code](https://github.com/jiangzheng2024/TTSP) | **AR · TOOL · TWI-E · REL** | Samples exploratory perception traces, filters them by confidence, and iteratively resolves remaining visual uncertainty. |
 | 2026-04-11 | [Agentic Video Generation: From Text to Executable Event Graphs via Tool-Constrained LLM Planning](https://arxiv.org/abs/2604.10383) | **AG-V · AR · TWI-P** | Builds validated event graphs with director, scene-builder, and relation agents before deterministic rendering. |
-| 2026-04-08 | [Walk the Talk: Bridging the Reasoning-Action Gap for Thinking with Images via Multimodal Agentic Policy Optimization](https://arxiv.org/abs/2604.06777) | **AR · TOOL · TWI-E · TRAIN** | Aligns tool observations with reasoning advantages so visual actions become useful rather than decorative. |
+| 2026-04-08 | [Walk the Talk: Bridging the Reasoning-Action Gap for Thinking with Images via Multimodal Agentic Policy Optimization](https://arxiv.org/abs/2604.06777) | **AR · TOOL · TWI-E · REL · TRAIN** | Aligns tool observations with reasoning advantages so visual actions become useful rather than decorative. |
 
 ### 2026-03
 
@@ -157,10 +174,10 @@ Papers are ordered by **first public release date (newest first)**. Cross-tags e
 | 2026-02-27 | [Thinking with Images as Continuous Actions: Numerical Visual Chain-of-Thought](https://arxiv.org/abs/2602.23959) · [Code](https://github.com/kesenzhao/NV-CoT) | **TWI-L · AR · TRAIN** | Treats coordinates as continuous actions and directly optimizes precise visual grounding. |
 | 2026-02-26 | [PhotoAgent: Agentic Photo Editing with Exploratory Visual Aesthetic Planning](https://arxiv.org/abs/2602.22809) · [Code](https://github.com/mdyao/PhotoAgent) · [Project](https://mdyao.github.io/PhotoAgent/) | **AG-I · AR · TOOL** | Searches an aesthetic edit tree with memory and iterative visual feedback. |
 | 2026-02-24 | [PyVision-RL: Forging Open Agentic Vision Models via RL](https://arxiv.org/abs/2602.20739) · [Code](https://github.com/agents-x-project/PyVision-RL) | **AR · TOOL · TWI-E · TRAIN** | Preserves multi-turn tool interaction and supports on-demand video frame inspection. |
-| 2026-02-13 | [Reliable Thinking with Images](https://arxiv.org/abs/2602.12916) | **TWI-E · TRAIN · BENCH** | Filters and votes over noisy visual thoughts to improve reliability. |
+| 2026-02-13 | [Reliable Thinking with Images](https://arxiv.org/abs/2602.12916) · [Code](https://github.com/XLearning-SCU/Reliable_TWI) | **TWI-E · REL · TRAIN · BENCH** | Filters and votes over noisy visual thoughts to improve reliability. |
 | 2026-02-12 | [IMAGAgent: Orchestrating Multi-Turn Image Editing via Constraint-Aware Planning and Reflection](https://arxiv.org/abs/2603.29602) · [Code](https://github.com/hackermmzz/IMAGAgent) | **AG-I · AR · TOOL** | Decomposes constraints, orchestrates heterogeneous editors, aggregates multiple critics, retries, and retains the best state. |
 | 2026-02-11 | [Chatting with Images for Introspective Visual Thinking](https://arxiv.org/abs/2602.11073) | **TWI-L · TRAIN** | Uses language-guided feature modulation and multi-region re-encoding instead of pixel tools. |
-| 2026-02-09 | [What, Whether and How? Unveiling Process Reward Models for Thinking with Images Reasoning](https://arxiv.org/abs/2602.08346) | **TWI-E · TRAIN · BENCH** | Studies process rewards over annotated visual-tool trajectories and seven error types. |
+| 2026-02-09 | [What, Whether and How? Unveiling Process Reward Models for Thinking with Images Reasoning](https://arxiv.org/abs/2602.08346) · [Code](https://github.com/siruihan2024/Process-Reward-Models-Thinking-Images) | **TWI-E · REL · TRAIN · BENCH** | Studies process rewards over annotated visual-tool trajectories and seven error types. |
 | 2026-02-09 | [Agent Banana: High-Fidelity Image Editing with Agentic Thinking and Tooling](https://arxiv.org/abs/2602.09084) · [Project](https://agent-banana.github.io/) | **AG-I · AR** | Uses a planner–executor hierarchy, folded long-context memory, and image-layer decomposition. |
 | 2026-02-05 | [M3: High-fidelity Text-to-Image Generation via Multi-Modal, Multi-Agent and Multi-Round Visual Reasoning](https://arxiv.org/abs/2602.06166) | **AG-I · AR** | Planner, checker, refiner, editor, and verifier agents repair constraints over multiple rounds. |
 | 2026-02-02 | [Kimi K2.5: Visual Agentic Intelligence](https://arxiv.org/abs/2602.02276) · [Code](https://github.com/MoonshotAI/Kimi-K2.5) · [Blog](https://www.kimi.com/blog/kimi-k2-5) | **AR · ACT · TOOL · TRAIN** | A native multimodal agent model spanning visual tool use, computer use, and parallel sub-agent orchestration. |
@@ -175,7 +192,7 @@ Papers are ordered by **first public release date (newest first)**. Cross-tags e
 | 2026-01-26 | [GenAgent: Scaling Text-to-Image Generation via Agentic Multimodal Reasoning](https://arxiv.org/abs/2601.18543) | **AG-I · AR · TOOL · TRAIN** | Learns reason–invoke–judge–reflect loops around interchangeable image generators. |
 | 2026-01-25 | [The Script is All You Need: An Agentic Framework for Long-Horizon Dialogue-to-Cinematic Video Generation](https://arxiv.org/abs/2601.17737) · [Code](https://github.com/Tencent/digitalhuman/tree/main/ScriptAgent) | **AG-V · AR** | Splits long-form production across scripter, director, and critic agents. |
 | 2026-01-21 | [Iterative Refinement Improves Compositional Image Generation](https://arxiv.org/abs/2601.15286) · [Code](https://github.com/shantanuj/Iterative-Image-Gen) · [Project](https://iterative-img-gen.github.io/) | **AG-I · AR** | A VLM critic, editor, and verifier iteratively repair unmet compositional constraints. |
-| 2026-01-14 | [Beyond Accuracy: Evaluating Grounded Visual Evidence in Thinking with Images](https://arxiv.org/abs/2601.11633) · [Code](https://github.com/Xuchen-Li/ViEBench) | **TWI-E · BENCH** | Evaluates whether visual intermediate evidence is grounded, not just whether answers are correct. |
+| 2026-01-14 | [Beyond Accuracy: Evaluating Grounded Visual Evidence in Thinking with Images](https://arxiv.org/abs/2601.11633) · [Code](https://github.com/Xuchen-Li/ViEBench) | **TWI-E · REL · BENCH** | Evaluates whether visual intermediate evidence is grounded, not just whether answers are correct. |
 | 2026-01-05 | [Agentic Retoucher for Text-To-Image Generation](https://arxiv.org/abs/2601.02046) | **AG-I · AR · TOOL** | Uses specialized agents to locate, diagnose, and locally repair image defects. |
 
 ### 2025-12
@@ -185,7 +202,7 @@ Papers are ordered by **first public release date (newest first)**. Cross-tags e
 | 2025-12-30 | [SenseNova-MARS: Empowering Multimodal Agentic Reasoning and Search via Reinforcement Learning](https://arxiv.org/abs/2512.24330) · [Code](https://github.com/OpenSenseNova/SenseNova-MARS) | **AR · SEARCH · TOOL · TWI-E · TRAIN** | Dynamically interleaves image search, text search, cropping, and reasoning. |
 | 2025-12-27 | [CoAgent: Collaborative Planning and Consistency Agent for Coherent Video Generation](https://arxiv.org/abs/2512.22536) | **AG-V · AR** | Plans storyboards, maintains entity memory, verifies intermediate shots, and selectively regenerates failures. |
 | 2025-12-23 | [CRAFT: Continuous Reasoning and Agentic Feedback Tuning for Multimodal Text-to-Image Generation](https://arxiv.org/abs/2512.20362) | **AG-I · AR** | Decomposes constraints, verifies outputs with a VLM, repairs failures, and stops explicitly. |
-| 2025-12-19 | [Deep But Reliable: Advancing Multi-turn Reasoning for Thinking with Images](https://arxiv.org/abs/2512.17306) | **AR · TOOL · TWI-E · TRAIN** | Trains reflective, self-correcting multi-turn visual-tool behavior with redundancy penalties. |
+| 2025-12-19 | [Deep But Reliable: Advancing Multi-turn Reasoning for Thinking with Images](https://arxiv.org/abs/2512.17306) | **AR · TOOL · TWI-E · REL · TRAIN** | Trains reflective, self-correcting multi-turn visual-tool behavior with redundancy penalties. |
 | 2025-12-09 | [Thinking with Images via Self-Calling Agent](https://arxiv.org/abs/2512.08511) · [Code](https://github.com/YWenxi/think-with-images-through-self-calling) | **AR · TWI-E** | Decomposes a task into calls to parameter-shared virtual sub-agents. |
 | 2025-12-03 | [Thinking with Programming Vision: Towards a Unified View for Thinking with Images](https://arxiv.org/abs/2512.03746) · [Code](https://github.com/ByteDance-BandAI/CodeVision) | **AR · TWI-P · TOOL** | Uses code as a universal visual-tool interface with composition and runtime error recovery. |
 | 2025-12-02 | [Skywork-R1V4: Toward Agentic Multimodal Intelligence through Interleaved Thinking with Images and DeepResearch](https://arxiv.org/abs/2512.02395) · [Code](https://github.com/SkyworkAI/Skywork-R1V) | **AR · SEARCH · TOOL · TWI-E** | Unifies image operations and web research in long, planning-consistent tool trajectories. |
@@ -195,6 +212,7 @@ Papers are ordered by **first public release date (newest first)**. Cross-tags e
 | Date | Paper and resources | Tags | Why it matters |
 |---|---|---|---|
 | 2025-11-28 | [JarvisEvo: Towards a Self-Evolving Photo Editing Agent with Synergistic Editor-Evaluator Optimization](https://arxiv.org/abs/2511.23002) · [Code](https://github.com/LYL1015/JarvisEvo) · [Project](https://jarvisevo.vercel.app/) | **AG-I · AR · TOOL** | Co-evolves editor and evaluator through tool selection, critique, reflection, and interleaved reasoning. |
+| 2025-11-27 | [Revisiting the Necessity of Lengthy Chain-of-Thought in Vision-centric Reasoning Generalization](https://arxiv.org/abs/2511.22586) · [Code](https://github.com/RUCAIBox/Revisiting-Visual-CoT) | **TWI-E · REL · TRAIN · BENCH** | Finds that concise essential grounding traces can generalize better than lengthy textual or visual chains of thought. |
 | 2025-11-26 | [Monet: Reasoning in Latent Visual Space Beyond Images and Language](https://arxiv.org/abs/2511.21395) · [Code](https://github.com/NOVAglow646/Monet) | **TWI-L · TRAIN** | Treats continuous embeddings as visual thoughts and directly optimizes the latent policy. |
 | 2025-11-26 | [MIRA: Multimodal Iterative Reasoning Agent for Image Editing](https://arxiv.org/abs/2511.21087) | **AG-I · AR · TOOL · TRAIN** | Learns atomic editing loops whose next action is conditioned on visual feedback. |
 | 2025-11-25 | [Agent0-VL: Exploring Self-Evolving Agent for Tool-Integrated Vision-Language Reasoning](https://arxiv.org/abs/2511.19900) · [Code](https://github.com/aiming-lab/Agent0) | **AR · TOOL · TWI-E · TRAIN** | Unifies solver and verifier roles for tool-grounded self-evaluation, repair, and evolution. |
@@ -225,7 +243,7 @@ Papers are ordered by **first public release date (newest first)**. Cross-tags e
 | Date | Paper and resources | Tags | Why it matters |
 |---|---|---|---|
 | 2025-09-30 | [DeepSketcher: Internalizing Visual Manipulation for Multimodal Reasoning](https://arxiv.org/abs/2509.25866) | **TWI-L · TRAIN** | Produces native visual thoughts in embedding space without repeated external rendering. |
-| 2025-09-25 | [DeFacto: Counterfactual Thinking with Images for Enforcing Evidence-Grounded and Faithful Reasoning](https://arxiv.org/abs/2509.20912) | **TWI-E · TRAIN** | Trains answer consistency against relevant regions and counterfactual image edits. |
+| 2025-09-25 | [DeFacto: Counterfactual Thinking with Images for Enforcing Evidence-Grounded and Faithful Reasoning](https://arxiv.org/abs/2509.20912) · [Code](https://github.com/tinnel123666888/defacto) | **TWI-E · REL · TRAIN** | Trains answer consistency against relevant regions and counterfactual image edits. |
 | 2025-09-17 | [PhysicalAgent: Towards General Cognitive Robotics with Foundation World Models](https://arxiv.org/abs/2509.13903) | **AG-V · WM · ACT · TWI-G** | Generates candidate trajectory videos, executes them, and replans after failure. |
 | 2025-09-12 | [Maestro: Self-Improving Text-to-Image Generation via Agent Orchestration](https://arxiv.org/abs/2509.10704) | **AG-I · AR** | Orchestrates specialized critics, a verifier, and a judge for iterative prompt evolution and candidate selection. |
 | 2025-09-09 | [Mini-o3: Scaling Up Reasoning Patterns and Interaction Turns for Visual Search](https://arxiv.org/abs/2509.07969) · [Code](https://github.com/Mini-o3/Mini-o3) · [Project](https://mini-o3.github.io/) | **AR · TOOL · TWI-E · TRAIN** | Scales visual search to dozens of turns with explicit exploration, backtracking, and goal retention. |
